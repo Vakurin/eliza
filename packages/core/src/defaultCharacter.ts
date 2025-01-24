@@ -3,11 +3,19 @@ import { Character, ModelProviderName } from "./types.ts";
 export const defaultCharacter: Character = {
     name: "Eliza",
     username: "eliza",
-    plugins: [],
+    plugins: [
+        {
+            name: "@elizaos/plugin-sui",
+            description: "Sui plugin",
+        },
+    ],
     clients: [],
-    modelProvider: ModelProviderName.LLAMALOCAL,
+    modelProvider: ModelProviderName.OPENAI,
     settings: {
-        secrets: {},
+        secrets: {
+            ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+            OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+        },
         voice: {
             model: "en_US-hfc_female-medium",
         },
